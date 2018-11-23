@@ -1,6 +1,5 @@
 ---
-- name: Docker
-  hosts: 127.0.0.1
+- hosts: 127.0.0.1
   connection: local  
   tasks:
    - name: download Docker and Git
