@@ -2,11 +2,12 @@
 - hosts: 127.0.0.1
   connection: local  
   tasks:
-   - name: download Docker and Git
-     command: apt-get install docker.io -y && apt-get install git -y
+   - name: download Docker 
+     command: apt-get install docker.io -y 
 
-   - name: Checking and Cloning
-     command: git --version && git clone https://github.com/dhemanth/Project.git
+   - name: Install Git and Cloning
+     command: git clone https://github.com/dhemanth/Project.git
+     ignore_errors: yes
 
    - name: Docker execution
      shell: cd /opt/Project;service docker start;docker build -t project:v1 .
@@ -16,4 +17,4 @@
      ignore_errors: yes
 
    - name: Attaching
-     command: docker exec project /bin/bash -c 'rm -f /var/www/html/* ; sudo mv Project/webserver/* /var/www/html/. ; service apache2 restart'
+     command: docker exec project /bin/bash -c 'rm -f /var/www/html/* ; mv Project/webserver/* /var/www/html/. ; service apache2 restart'
