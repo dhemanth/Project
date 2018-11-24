@@ -1,0 +1,13 @@
+---
+- name: CouchDB Installation and Configuration
+  hosts: dbserver
+  tasks:
+  - name: Installing docker
+    shell: apt-get install docker.io -y ; service docker start
+    ignore_errors: no
+
+  - name: Getting couchdb image
+    shell: service docker restart ; docker pull couchdb 
+
+  - name: Running container from couchdb images
+    command: docker run --name couchdb -itd -p 8088:5984 couchdb:latest /bin/bash
