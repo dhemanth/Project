@@ -5,7 +5,7 @@
    - name: download Docker 
      command: apt-get install docker.io -y 
 
-   - name: Install Git and Cloning
+   - name: Git Cloning
      command: git clone https://github.com/dhemanth/Project.git
      ignore_errors: yes
 
